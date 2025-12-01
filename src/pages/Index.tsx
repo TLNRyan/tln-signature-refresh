@@ -6,6 +6,8 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Copy, Check } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { useTheme } from "next-themes";
 
 const Index = () => {
   const [name, setName] = useState("Susan Grandy");
@@ -14,6 +16,7 @@ const Index = () => {
   const [website, setWebsite] = useState("www.learning.net");
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
+  const { theme } = useTheme();
 
   const generateHTML = () => {
     return `<table cellpadding="0" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif;">
@@ -61,6 +64,9 @@ const Index = () => {
     <div className="min-h-screen bg-background py-12 px-4">
       <div className="max-w-6xl mx-auto">
         <header className="text-center mb-12">
+          <div className="flex justify-end mb-4">
+            <ThemeToggle />
+          </div>
           <h1 className="text-4xl font-outfit font-bold text-foreground mb-3">
             Email Signature Generator
           </h1>
@@ -140,10 +146,12 @@ const Index = () => {
             <CardHeader>
               <CardTitle className="font-outfit">Preview</CardTitle>
               <CardDescription className="font-manrope">
-                This is how your signature will appear
+                {theme === "dark" 
+                  ? "Dark mode preview - how it looks in dark email clients" 
+                  : "Light mode preview - how it looks in light email clients"}
               </CardDescription>
             </CardHeader>
-            <CardContent className="flex items-start justify-center min-h-[300px]">
+            <CardContent className="flex items-start justify-center min-h-[300px] p-8">
               <EmailSignature
                 name={name}
                 title={title}
