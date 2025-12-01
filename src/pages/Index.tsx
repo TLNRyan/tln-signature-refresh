@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Copy, Check } from "lucide-react";
+import { Copy, Check, Download } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useTheme } from "next-themes";
@@ -86,6 +86,24 @@ const Index = () => {
     });
   };
 
+  const downloadHTML = () => {
+    const html = generateHTML();
+    const blob = new Blob([html], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'email-signature.html';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+    
+    toast({
+      title: "Downloaded!",
+      description: "Email signature HTML file downloaded",
+    });
+  };
+
   return (
     <div className="min-h-screen bg-background py-12 px-4">
       <div className="max-w-6xl mx-auto">
@@ -153,23 +171,33 @@ const Index = () => {
                 />
               </div>
             </div>
-            <Button 
-              onClick={copyToClipboard} 
-              className="w-full font-manrope mt-6"
-              variant="default"
-            >
-              {copied ? (
-                <>
-                  <Check className="mr-2 h-4 w-4" />
-                  Copied!
-                </>
-              ) : (
-                <>
-                  <Copy className="mr-2 h-4 w-4" />
-                  Copy HTML Code
-                </>
-              )}
-            </Button>
+            <div className="grid md:grid-cols-2 gap-4 mt-6">
+              <Button 
+                onClick={copyToClipboard} 
+                className="w-full font-manrope"
+                variant="default"
+              >
+                {copied ? (
+                  <>
+                    <Check className="mr-2 h-4 w-4" />
+                    Copied!
+                  </>
+                ) : (
+                  <>
+                    <Copy className="mr-2 h-4 w-4" />
+                    Copy HTML Code
+                  </>
+                )}
+              </Button>
+              <Button 
+                onClick={downloadHTML} 
+                className="w-full font-manrope"
+                variant="outline"
+              >
+                <Download className="mr-2 h-4 w-4" />
+                Download HTML File
+              </Button>
+            </div>
           </CardContent>
         </Card>
 
