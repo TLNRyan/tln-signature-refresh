@@ -1,14 +1,18 @@
 import { Phone, Globe } from "lucide-react";
-import logoImage from "@/assets/tln-logo.png";
+import logoImageBlack from "@/assets/tln-logo.png";
+import logoImageWhite from "@/assets/tln-logo-white.png";
 
 interface EmailSignatureProps {
   name: string;
   title: string;
   phone: string;
   website: string;
+  mode?: "light" | "dark";
 }
 
-const EmailSignature = ({ name, title, phone, website }: EmailSignatureProps) => {
+const EmailSignature = ({ name, title, phone, website, mode = "light" }: EmailSignatureProps) => {
+  const logoImage = mode === "dark" ? logoImageWhite : logoImageBlack;
+  
   return (
     <div className="inline-block bg-card border border-border p-6 rounded-sm">
       <table cellPadding="0" cellSpacing="0" style={{ borderCollapse: 'collapse', fontFamily: 'Arial, sans-serif' }}>

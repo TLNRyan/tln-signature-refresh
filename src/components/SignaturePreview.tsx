@@ -40,14 +40,13 @@ const SignaturePreview = ({ name, title, phone, website, mode }: SignaturePrevie
             : "bg-[hsl(42_12%_95%)]"
         }`}
       >
-        <div className={mode === "dark" ? "dark" : ""}>
-          <EmailSignature
-            name={name}
-            title={title}
-            phone={phone}
-            website={website}
-          />
-        </div>
+        <EmailSignature
+          name={name}
+          title={title}
+          phone={phone}
+          website={website}
+          mode={mode}
+        />
       </CardContent>
     </Card>
   );
