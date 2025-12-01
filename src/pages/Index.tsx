@@ -1,5 +1,5 @@
 import { useState } from "react";
-import EmailSignature from "@/components/EmailSignature";
+import SignaturePreview from "@/components/SignaturePreview";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -7,7 +7,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Copy, Check } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { useTheme } from "next-themes";
 
 const Index = () => {
   const [name, setName] = useState("Susan Grandy");
@@ -16,7 +15,6 @@ const Index = () => {
   const [website, setWebsite] = useState("www.learning.net");
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
-  const { theme } = useTheme();
 
   const generateHTML = () => {
     return `<table cellpadding="0" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif;">
@@ -75,16 +73,16 @@ const Index = () => {
           </p>
         </header>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Input Form */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="font-outfit">Customize Your Signature</CardTitle>
-              <CardDescription className="font-manrope">
-                Enter your details below to generate your email signature
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
+        {/* Input Form */}
+        <Card className="max-w-2xl mx-auto mb-8">
+          <CardHeader>
+            <CardTitle className="font-outfit">Customize Your Signature</CardTitle>
+            <CardDescription className="font-manrope">
+              Enter your details below to generate your email signature
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="name" className="font-manrope">Full Name</Label>
                 <Input
@@ -121,45 +119,48 @@ const Index = () => {
                   className="font-manrope"
                 />
               </div>
-              <Button 
-                onClick={copyToClipboard} 
-                className="w-full font-manrope"
-                variant="default"
-              >
-                {copied ? (
-                  <>
-                    <Check className="mr-2 h-4 w-4" />
-                    Copied!
-                  </>
-                ) : (
-                  <>
-                    <Copy className="mr-2 h-4 w-4" />
-                    Copy HTML Code
-                  </>
-                )}
-              </Button>
-            </CardContent>
-          </Card>
+            </div>
+            <Button 
+              onClick={copyToClipboard} 
+              className="w-full font-manrope mt-6"
+              variant="default"
+            >
+              {copied ? (
+                <>
+                  <Check className="mr-2 h-4 w-4" />
+                  Copied!
+                </>
+              ) : (
+                <>
+                  <Copy className="mr-2 h-4 w-4" />
+                  Copy HTML Code
+                </>
+              )}
+            </Button>
+          </CardContent>
+        </Card>
 
-          {/* Preview */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="font-outfit">Preview</CardTitle>
-              <CardDescription className="font-manrope">
-                {theme === "dark" 
-                  ? "Dark mode preview - how it looks in dark email clients" 
-                  : "Light mode preview - how it looks in light email clients"}
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="flex items-start justify-center min-h-[300px] p-8">
-              <EmailSignature
-                name={name}
-                title={title}
-                phone={phone}
-                website={website}
-              />
-            </CardContent>
-          </Card>
+        {/* Side-by-Side Comparison */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-outfit font-bold text-center mb-6">
+            Theme Comparison
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <SignaturePreview
+              name={name}
+              title={title}
+              phone={phone}
+              website={website}
+              mode="light"
+            />
+            <SignaturePreview
+              name={name}
+              title={title}
+              phone={phone}
+              website={website}
+              mode="dark"
+            />
+          </div>
         </div>
 
         <Card className="mt-8">
