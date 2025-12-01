@@ -28,23 +28,23 @@ const EmailSignature = ({ name, title, phone, website, mode = "light", linkedin 
             </td>
             <td style={{ paddingLeft: '20px', verticalAlign: 'top' }}>
               <div style={{ marginBottom: '8px' }}>
-                <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: 'hsl(var(--foreground))', fontFamily: "'Outfit', sans-serif" }}>
+                <p style={{ margin: 0, fontSize: '15px', fontWeight: 'normal', color: 'hsl(var(--foreground))', fontFamily: 'Arial, sans-serif' }}>
                   {name}
                 </p>
-                <p style={{ margin: 0, fontSize: '13px', color: 'hsl(var(--tln-grey))', fontFamily: "'Manrope', sans-serif", letterSpacing: '0.02em' }}>
+                <p style={{ margin: 0, fontSize: '13px', color: 'hsl(var(--tln-grey))', fontFamily: 'Arial, sans-serif' }}>
                   {title}
                 </p>
               </div>
               <div style={{ marginTop: '12px' }}>
                 <p style={{ margin: '4px 0', fontSize: '13px', color: 'hsl(var(--tln-cadet))', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <Phone size={14} style={{ display: 'inline' }} />
-                  <span>{phone}</span>
+                  <Phone size={14} style={{ display: 'inline', color: 'hsl(var(--tln-cadet))' }} />
+                  <span style={{ fontFamily: 'Arial, sans-serif' }}>{phone}</span>
                 </p>
                 <p style={{ margin: '4px 0', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px' }}>
                   <Globe size={14} style={{ display: 'inline', color: 'hsl(var(--tln-cadet))' }} />
                   <a 
                     href={`https://${website}`} 
-                    style={{ color: 'hsl(var(--tln-blue))', textDecoration: 'none' }}
+                    style={{ color: 'hsl(var(--tln-cadet))', textDecoration: 'none', fontFamily: 'Arial, sans-serif' }}
                   >
                     {website}
                   </a>
