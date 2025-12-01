@@ -9,12 +9,9 @@ interface SignaturePreviewProps {
   website: string;
   mode: "light" | "dark";
   linkedin?: string;
-  twitter?: string;
-  facebook?: string;
-  instagram?: string;
 }
 
-const SignaturePreview = ({ name, title, phone, website, mode, linkedin, twitter, facebook, instagram }: SignaturePreviewProps) => {
+const SignaturePreview = ({ name, title, phone, website, mode, linkedin }: SignaturePreviewProps) => {
   return (
     <Card className={mode === "dark" ? "dark" : ""}>
       <CardHeader>
@@ -51,9 +48,6 @@ const SignaturePreview = ({ name, title, phone, website, mode, linkedin, twitter
           website={website}
           mode={mode}
           linkedin={linkedin}
-          twitter={twitter}
-          facebook={facebook}
-          instagram={instagram}
         />
       </CardContent>
     </Card>

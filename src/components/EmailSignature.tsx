@@ -1,4 +1,4 @@
-import { Phone, Globe, Linkedin, Twitter, Facebook, Instagram } from "lucide-react";
+import { Phone, Globe, Linkedin } from "lucide-react";
 import logoImageBlack from "@/assets/tln-logo.png";
 import logoImageWhite from "@/assets/tln-logo-white.png";
 
@@ -9,20 +9,10 @@ interface EmailSignatureProps {
   website: string;
   mode?: "light" | "dark";
   linkedin?: string;
-  twitter?: string;
-  facebook?: string;
-  instagram?: string;
 }
 
-const EmailSignature = ({ name, title, phone, website, mode = "light", linkedin, twitter, facebook, instagram }: EmailSignatureProps) => {
+const EmailSignature = ({ name, title, phone, website, mode = "light", linkedin }: EmailSignatureProps) => {
   const logoImage = mode === "dark" ? logoImageWhite : logoImageBlack;
-  
-  const socialLinks = [
-    { url: linkedin, Icon: Linkedin, label: "LinkedIn" },
-    { url: twitter, Icon: Twitter, label: "Twitter" },
-    { url: facebook, Icon: Facebook, label: "Facebook" },
-    { url: instagram, Icon: Instagram, label: "Instagram" },
-  ].filter(link => link.url && link.url.trim() !== "");
   
   return (
     <div className="inline-block bg-card border border-border p-6 rounded-sm">
@@ -60,25 +50,25 @@ const EmailSignature = ({ name, title, phone, website, mode = "light", linkedin,
                   </a>
                 </p>
               </div>
-              {socialLinks.length > 0 && (
-                <div style={{ marginTop: '12px', display: 'flex', gap: '8px', alignItems: 'center' }}>
-                  {socialLinks.map(({ url, Icon, label }) => (
-                    <a
-                      key={label}
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ 
-                        color: 'hsl(var(--tln-cadet))',
-                        transition: 'color 0.2s',
-                        display: 'inline-flex',
-                        alignItems: 'center'
-                      }}
-                      title={label}
-                    >
-                      <Icon size={18} />
-                    </a>
-                  ))}
+              {linkedin && linkedin.trim() !== "" && (
+                <div style={{ marginTop: '12px' }}>
+                  <a
+                    href={linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ 
+                      color: 'hsl(var(--tln-cadet))',
+                      transition: 'color 0.2s',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      fontSize: '13px'
+                    }}
+                    title="LinkedIn"
+                  >
+                    <Linkedin size={16} />
+                    <span>LinkedIn</span>
+                  </a>
                 </div>
               )}
             </td>
