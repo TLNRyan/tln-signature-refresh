@@ -156,10 +156,6 @@ const Index = () => {
                   className="font-manrope"
                 />
               </div>
-            </div>
-            
-            <div className="pt-4 border-t border-border">
-              <h3 className="text-sm font-manrope font-semibold mb-3 text-foreground">LinkedIn (Optional)</h3>
               <div className="space-y-2">
                 <Label htmlFor="linkedin" className="font-manrope">LinkedIn Profile URL</Label>
                 <Input
@@ -169,6 +165,7 @@ const Index = () => {
                   placeholder="https://linkedin.com/in/yourprofile"
                   className="font-manrope"
                 />
+                <p className="text-xs text-muted-foreground font-manrope">Leave blank if you do not want to add this</p>
               </div>
             </div>
             <div className="grid md:grid-cols-2 gap-4 mt-6">
