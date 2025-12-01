@@ -1,6 +1,6 @@
 import { Phone, Globe, Linkedin } from "lucide-react";
 import logoImageBlack from "@/assets/tln-logo.png";
-import logoImageWhite from "@/assets/tln-logo-white.png";
+import logoImageDark from "@/assets/tln-logo-dark.png";
 
 interface EmailSignatureProps {
   name: string;
@@ -12,10 +12,12 @@ interface EmailSignatureProps {
 }
 
 const EmailSignature = ({ name, title, phone, website, mode = "light", linkedin }: EmailSignatureProps) => {
-  const logoImage = mode === "dark" ? logoImageWhite : logoImageBlack;
+  const logoImage = mode === "dark" ? logoImageDark : logoImageBlack;
+  const nameColor = mode === "dark" ? "#ffffff" : "#000000";
+  const bgColor = mode === "dark" ? "#000000" : "#ffffff";
   
   return (
-    <div className="inline-block bg-white p-6">
+    <div className="inline-block p-6" style={{ backgroundColor: bgColor }}>
       <table cellPadding="0" cellSpacing="0" style={{ borderCollapse: 'collapse', fontFamily: 'Arial, sans-serif' }}>
         <tbody>
           <tr>
@@ -28,7 +30,7 @@ const EmailSignature = ({ name, title, phone, website, mode = "light", linkedin 
             </td>
             <td style={{ paddingLeft: '16px', verticalAlign: 'top' }}>
               <div>
-                <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#000000', fontFamily: 'Arial, sans-serif', lineHeight: '1.4' }}>
+                <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: nameColor, fontFamily: 'Arial, sans-serif', lineHeight: '1.4' }}>
                   {name}
                 </p>
                 <p style={{ margin: '2px 0 0 0', fontSize: '13px', color: '#6a6b68', fontFamily: 'Arial, sans-serif', lineHeight: '1.4' }}>
