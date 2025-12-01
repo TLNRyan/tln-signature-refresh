@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Copy, Check } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { useTheme } from "next-themes";
 
 const Index = () => {
   const [name, setName] = useState("Susan Grandy");
@@ -15,8 +16,13 @@ const Index = () => {
   const [linkedin, setLinkedin] = useState("");
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
+  const { theme, systemTheme } = useTheme();
   
   const website = "www.learning.net"; // Fixed company website
+  
+  // Determine the active theme based on browser preference
+  const activeTheme = theme === "system" ? systemTheme : theme;
+  const browserMode = activeTheme === "dark" ? "dark" : "light";
 
   const generateHTML = () => {
     const socialHTML = linkedin && linkedin.trim() !== "" ? `
@@ -151,6 +157,26 @@ const Index = () => {
             </Button>
           </CardContent>
         </Card>
+
+        {/* Browser Theme Preview */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-outfit font-bold text-center mb-2">
+            Your Signature
+          </h2>
+          <p className="text-center text-muted-foreground font-manrope mb-6">
+            This preview matches your browser's {browserMode} theme
+          </p>
+          <div className="flex justify-center">
+            <SignaturePreview
+              name={name}
+              title={title}
+              phone={phone}
+              website={website}
+              mode={browserMode}
+              linkedin={linkedin}
+            />
+          </div>
+        </div>
 
         {/* Side-by-Side Comparison */}
         <div className="mb-8">
