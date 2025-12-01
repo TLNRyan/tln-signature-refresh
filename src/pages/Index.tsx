@@ -13,10 +13,26 @@ const Index = () => {
   const [title, setTitle] = useState("Senior Software Engineer");
   const [phone, setPhone] = useState("902.441.3779");
   const [website, setWebsite] = useState("www.learning.net");
+  const [linkedin, setLinkedin] = useState("");
+  const [twitter, setTwitter] = useState("");
+  const [facebook, setFacebook] = useState("");
+  const [instagram, setInstagram] = useState("");
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
 
   const generateHTML = () => {
+    const socialLinks = [
+      { url: linkedin, icon: "LinkedIn", color: "#0077b5" },
+      { url: twitter, icon: "Twitter", color: "#1da1f2" },
+      { url: facebook, icon: "Facebook", color: "#1877f2" },
+      { url: instagram, icon: "Instagram", color: "#e4405f" },
+    ].filter(link => link.url && link.url.trim() !== "");
+
+    const socialHTML = socialLinks.length > 0 ? `
+        <div style="margin-top: 12px; display: flex; gap: 8px; align-items: center;">
+          ${socialLinks.map(({ url, icon, color }) => `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: ${color}; text-decoration: none; font-size: 18px;" title="${icon}">${icon.charAt(0)}</a>`).join('')}
+        </div>` : '';
+
     return `<table cellpadding="0" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif;">
   <tbody>
     <tr>
@@ -39,7 +55,7 @@ const Index = () => {
           <p style="margin: 4px 0; font-size: 13px;">
             🌐 <a href="https://${website}" style="color: #6a8ba2; text-decoration: none;">${website}</a>
           </p>
-        </div>
+        </div>${socialHTML}
       </td>
     </tr>
   </tbody>
@@ -120,6 +136,52 @@ const Index = () => {
                 />
               </div>
             </div>
+            
+            <div className="pt-4 border-t border-border">
+              <h3 className="text-sm font-manrope font-semibold mb-3 text-foreground">Social Media (Optional)</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="linkedin" className="font-manrope">LinkedIn URL</Label>
+                  <Input
+                    id="linkedin"
+                    value={linkedin}
+                    onChange={(e) => setLinkedin(e.target.value)}
+                    placeholder="https://linkedin.com/in/yourprofile"
+                    className="font-manrope"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="twitter" className="font-manrope">Twitter URL</Label>
+                  <Input
+                    id="twitter"
+                    value={twitter}
+                    onChange={(e) => setTwitter(e.target.value)}
+                    placeholder="https://twitter.com/yourhandle"
+                    className="font-manrope"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="facebook" className="font-manrope">Facebook URL</Label>
+                  <Input
+                    id="facebook"
+                    value={facebook}
+                    onChange={(e) => setFacebook(e.target.value)}
+                    placeholder="https://facebook.com/yourpage"
+                    className="font-manrope"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="instagram" className="font-manrope">Instagram URL</Label>
+                  <Input
+                    id="instagram"
+                    value={instagram}
+                    onChange={(e) => setInstagram(e.target.value)}
+                    placeholder="https://instagram.com/yourhandle"
+                    className="font-manrope"
+                  />
+                </div>
+              </div>
+            </div>
             <Button 
               onClick={copyToClipboard} 
               className="w-full font-manrope mt-6"
@@ -152,6 +214,10 @@ const Index = () => {
               phone={phone}
               website={website}
               mode="light"
+              linkedin={linkedin}
+              twitter={twitter}
+              facebook={facebook}
+              instagram={instagram}
             />
             <SignaturePreview
               name={name}
@@ -159,6 +225,10 @@ const Index = () => {
               phone={phone}
               website={website}
               mode="dark"
+              linkedin={linkedin}
+              twitter={twitter}
+              facebook={facebook}
+              instagram={instagram}
             />
           </div>
         </div>
