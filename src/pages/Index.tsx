@@ -25,38 +25,53 @@ const Index = () => {
   const browserMode = activeTheme === "dark" ? "dark" : "light";
 
   const generateHTML = () => {
-    const socialHTML = linkedin && linkedin.trim() !== "" ? `
+    const linkedinHTML = linkedin && linkedin.trim() !== "" ? `
         <div style="margin-top: 12px;">
-          <a href="${linkedin}" target="_blank" rel="noopener noreferrer" style="color: #0077b5; text-decoration: none; font-size: 18px;" title="LinkedIn">🔗 LinkedIn</a>
+          <a href="${linkedin}" target="_blank" rel="noopener noreferrer" style="color: #5f9ea0; text-decoration: none; font-size: 13px; display: inline-flex; align-items: center; gap: 6px;" title="LinkedIn">
+            <span>🔗</span>
+            <span>LinkedIn</span>
+          </a>
         </div>` : '';
 
-    return `<table cellpadding="0" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif;">
-  <tbody>
-    <tr>
-      <td style="padding-right: 20px; vertical-align: top; border-right: 2px solid #5f9ea0;">
-        <img src="YOUR_LOGO_URL_HERE" alt="The Learning Network" style="width: 120px; height: auto; display: block;" />
-      </td>
-      <td style="padding-left: 20px; vertical-align: top;">
-        <div style="margin-bottom: 8px;">
-          <p style="margin: 0; font-size: 16px; font-weight: bold; color: #000000; font-family: 'Outfit', sans-serif;">
-            ${name}
-          </p>
-          <p style="margin: 0; font-size: 13px; color: #6a6b68; font-family: 'Manrope', sans-serif; letter-spacing: 0.02em;">
-            ${title}
-          </p>
-        </div>
-        <div style="margin-top: 12px;">
-          <p style="margin: 4px 0; font-size: 13px; color: #5f9ea0;">
-            📞 ${phone}
-          </p>
-          <p style="margin: 4px 0; font-size: 13px;">
-            🌐 <a href="https://${website}" style="color: #6a8ba2; text-decoration: none;">${website}</a>
-          </p>
-        </div>${socialHTML}
-      </td>
-    </tr>
-  </tbody>
-</table>`;
+    return `<div style="display: inline-block; padding: 24px; background-color: #ffffff;">
+  <style>
+    @media (prefers-color-scheme: dark) {
+      .email-signature-wrapper { background-color: #000000 !important; }
+      .signature-name { color: #ffffff !important; }
+      .signature-separator { border-color: #d1d5db !important; }
+    }
+  </style>
+  <table cellpadding="0" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif;" class="email-signature-wrapper">
+    <tbody>
+      <tr>
+        <td style="padding-right: 16px; vertical-align: top; border-right: 1px solid #d1d5db;" class="signature-separator">
+          <picture>
+            <source srcset="YOUR_DARK_LOGO_URL_HERE" media="(prefers-color-scheme: dark)">
+            <img src="YOUR_LIGHT_LOGO_URL_HERE" alt="The Learning Network" style="width: 140px; height: auto; display: block;" />
+          </picture>
+        </td>
+        <td style="padding-left: 16px; vertical-align: top;">
+          <div>
+            <p style="margin: 0; font-size: 16px; font-weight: bold; color: #000000; font-family: Arial, sans-serif; line-height: 1.4;" class="signature-name">
+              ${name}
+            </p>
+            <p style="margin: 2px 0 0 0; font-size: 13px; color: #6a6b68; font-family: Arial, sans-serif; line-height: 1.4;">
+              ${title}
+            </p>
+            <p style="margin: 8px 0 0 0; font-size: 13px; color: #5f9ea0; font-family: Arial, sans-serif; line-height: 1.4; display: flex; align-items: center; gap: 6px;">
+              <span>📞</span>
+              <span>${phone}</span>
+            </p>
+            <p style="margin: 2px 0 0 0; font-size: 13px; font-family: Arial, sans-serif; line-height: 1.4; display: flex; align-items: center; gap: 6px;">
+              <span>🌐</span>
+              <a href="https://${website}" style="color: #5f9ea0; text-decoration: none;">${website}</a>
+            </p>
+          </div>${linkedinHTML}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>`;
   };
 
   const copyToClipboard = () => {
@@ -214,11 +229,12 @@ const Index = () => {
               <li>Open your email client settings (Gmail, Outlook, etc.)</li>
               <li>Navigate to the signature section</li>
               <li>Paste the HTML code (you may need to paste into the HTML editor mode)</li>
-              <li>Replace "YOUR_LOGO_URL_HERE" with the actual hosted logo URL</li>
+              <li>Replace "YOUR_LIGHT_LOGO_URL_HERE" with your hosted black logo URL</li>
+              <li>Replace "YOUR_DARK_LOGO_URL_HERE" with your hosted white logo URL</li>
               <li>Save your signature</li>
             </ol>
             <p className="text-sm mt-4 pt-4 border-t border-border">
-              <strong>Note:</strong> You'll need to host the logo image online and replace the placeholder URL in the HTML code with your actual logo URL.
+              <strong>Note:</strong> You'll need to host both logo images (black for light mode, white for dark mode) online and replace the placeholder URLs in the HTML code. The signature will automatically adapt to your recipient's email client theme.
             </p>
           </CardContent>
         </Card>
