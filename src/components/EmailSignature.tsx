@@ -23,7 +23,7 @@ const EmailSignature = ({ name, title, phone, website, mode = "light", linkedin 
               <img 
                 src={logoImage} 
                 alt="The Learning Network" 
-                style={{ width: '100px', height: 'auto', display: 'block' }}
+                style={{ width: '140px', height: 'auto', display: 'block' }}
               />
             </td>
             <td style={{ paddingLeft: '16px', verticalAlign: 'top' }}>
