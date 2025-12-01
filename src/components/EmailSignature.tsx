@@ -1,4 +1,4 @@
-import { Phone, Globe, Linkedin } from "lucide-react";
+import { Linkedin } from "lucide-react";
 import logoImageBlack from "@/assets/tln-logo.png";
 import logoImageWhite from "@/assets/tln-logo-white.png";
 
@@ -15,36 +15,32 @@ const EmailSignature = ({ name, title, phone, website, mode = "light", linkedin 
   const logoImage = mode === "dark" ? logoImageWhite : logoImageBlack;
   
   return (
-    <div className="inline-block bg-card border border-border p-6 rounded-sm">
+    <div className="inline-block bg-white p-6">
       <table cellPadding="0" cellSpacing="0" style={{ borderCollapse: 'collapse', fontFamily: 'Arial, sans-serif' }}>
         <tbody>
           <tr>
-            <td style={{ paddingRight: '20px', verticalAlign: 'top', borderRight: '2px solid hsl(var(--tln-cadet))' }}>
+            <td style={{ paddingRight: '16px', verticalAlign: 'top', borderRight: '1px solid #d1d5db' }}>
               <img 
                 src={logoImage} 
                 alt="The Learning Network" 
-                style={{ width: '120px', height: 'auto', display: 'block' }}
+                style={{ width: '100px', height: 'auto', display: 'block' }}
               />
             </td>
-            <td style={{ paddingLeft: '20px', verticalAlign: 'top' }}>
-              <div style={{ marginBottom: '8px' }}>
-                <p style={{ margin: 0, fontSize: '15px', fontWeight: 'normal', color: 'hsl(var(--foreground))', fontFamily: 'Arial, sans-serif' }}>
+            <td style={{ paddingLeft: '16px', verticalAlign: 'top' }}>
+              <div>
+                <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#000000', fontFamily: 'Arial, sans-serif', lineHeight: '1.4' }}>
                   {name}
                 </p>
-                <p style={{ margin: 0, fontSize: '13px', color: 'hsl(var(--tln-grey))', fontFamily: 'Arial, sans-serif' }}>
+                <p style={{ margin: '2px 0 0 0', fontSize: '13px', color: '#6a6b68', fontFamily: 'Arial, sans-serif', lineHeight: '1.4' }}>
                   {title}
                 </p>
-              </div>
-              <div style={{ marginTop: '12px' }}>
-                <p style={{ margin: '4px 0', fontSize: '13px', color: 'hsl(var(--tln-cadet))', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <Phone size={14} style={{ display: 'inline', color: 'hsl(var(--tln-cadet))' }} />
-                  <span style={{ fontFamily: 'Arial, sans-serif' }}>{phone}</span>
+                <p style={{ margin: '8px 0 0 0', fontSize: '13px', color: '#5f9ea0', fontFamily: 'Arial, sans-serif', lineHeight: '1.4' }}>
+                  {phone}
                 </p>
-                <p style={{ margin: '4px 0', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <Globe size={14} style={{ display: 'inline', color: 'hsl(var(--tln-cadet))' }} />
+                <p style={{ margin: '2px 0 0 0', fontSize: '13px', fontFamily: 'Arial, sans-serif', lineHeight: '1.4' }}>
                   <a 
                     href={`https://${website}`} 
-                    style={{ color: 'hsl(var(--tln-cadet))', textDecoration: 'none', fontFamily: 'Arial, sans-serif' }}
+                    style={{ color: '#5f9ea0', textDecoration: 'none' }}
                   >
                     {website}
                   </a>
@@ -57,12 +53,13 @@ const EmailSignature = ({ name, title, phone, website, mode = "light", linkedin 
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{ 
-                      color: 'hsl(var(--tln-cadet))',
+                      color: '#5f9ea0',
                       transition: 'color 0.2s',
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '6px',
-                      fontSize: '13px'
+                      fontSize: '13px',
+                      textDecoration: 'none'
                     }}
                     title="LinkedIn"
                   >

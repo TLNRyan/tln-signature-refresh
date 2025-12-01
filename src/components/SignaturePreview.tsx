@@ -38,7 +38,7 @@ const SignaturePreview = ({ name, title, phone, website, mode, linkedin }: Signa
         className={`flex items-start justify-center min-h-[280px] p-8 rounded-b-lg transition-colors ${
           mode === "dark" 
             ? "bg-[hsl(0_0%_0%)]" 
-            : "bg-[hsl(42_12%_95%)]"
+            : "bg-white"
         }`}
       >
         <EmailSignature
