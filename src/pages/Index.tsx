@@ -12,13 +12,14 @@ const Index = () => {
   const [name, setName] = useState("Susan Grandy");
   const [title, setTitle] = useState("Senior Software Engineer");
   const [phone, setPhone] = useState("902.441.3779");
-  const [website, setWebsite] = useState("www.learning.net");
   const [linkedin, setLinkedin] = useState("");
   const [twitter, setTwitter] = useState("");
   const [facebook, setFacebook] = useState("");
   const [instagram, setInstagram] = useState("");
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
+  
+  const website = "www.learning.net"; // Fixed company website
 
   const generateHTML = () => {
     const socialLinks = [
@@ -123,15 +124,6 @@ const Index = () => {
                   id="phone"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="font-manrope"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="website" className="font-manrope">Website</Label>
-                <Input
-                  id="website"
-                  value={website}
-                  onChange={(e) => setWebsite(e.target.value)}
                   className="font-manrope"
                 />
               </div>
