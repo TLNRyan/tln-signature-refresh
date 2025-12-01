@@ -1,4 +1,4 @@
-import { Linkedin } from "lucide-react";
+import { Phone, Globe, Linkedin } from "lucide-react";
 import logoImageBlack from "@/assets/tln-logo.png";
 import logoImageWhite from "@/assets/tln-logo-white.png";
 
@@ -34,10 +34,12 @@ const EmailSignature = ({ name, title, phone, website, mode = "light", linkedin 
                 <p style={{ margin: '2px 0 0 0', fontSize: '13px', color: '#6a6b68', fontFamily: 'Arial, sans-serif', lineHeight: '1.4' }}>
                   {title}
                 </p>
-                <p style={{ margin: '8px 0 0 0', fontSize: '13px', color: '#5f9ea0', fontFamily: 'Arial, sans-serif', lineHeight: '1.4' }}>
-                  {phone}
+                <p style={{ margin: '8px 0 0 0', fontSize: '13px', color: '#5f9ea0', fontFamily: 'Arial, sans-serif', lineHeight: '1.4', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <Phone size={14} style={{ color: '#5f9ea0', flexShrink: 0 }} />
+                  <span>{phone}</span>
                 </p>
-                <p style={{ margin: '2px 0 0 0', fontSize: '13px', fontFamily: 'Arial, sans-serif', lineHeight: '1.4' }}>
+                <p style={{ margin: '2px 0 0 0', fontSize: '13px', fontFamily: 'Arial, sans-serif', lineHeight: '1.4', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <Globe size={14} style={{ color: '#5f9ea0', flexShrink: 0 }} />
                   <a 
                     href={`https://${website}`} 
                     style={{ color: '#5f9ea0', textDecoration: 'none' }}
