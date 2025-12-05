@@ -10,9 +10,9 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { useTheme } from "next-themes";
 
 const Index = () => {
-  const [name, setName] = useState("Susan Grandy");
-  const [title, setTitle] = useState("Senior Software Engineer");
-  const [phone, setPhone] = useState("902.441.3779");
+  const [name, setName] = useState("Scarlett Monroe");
+  const [title, setTitle] = useState("Director of Intrigue & Intelligence");
+  const [phone, setPhone] = useState("555.555.1234");
   const [linkedin, setLinkedin] = useState("");
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
